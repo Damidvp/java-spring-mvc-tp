@@ -6,8 +6,21 @@
     <title>Update de Species</title>
 </head>
 <body>
-	<h1>Species [ID <span th:text="${update_species.id}"></span>]</h1>
-	<p th:text="${update_species.commonName}"></p>
-	<p th:text="${update_species.latinName}"></p>
+	<h1>Modification de l'espèce [ID <span th:text="${update_species.id}"></span>]</h1>
+	<form th:object="${update_species}" th:action="@{/species}" method="post">
+		<input type="hidden" th:field="*{id}" />
+		<div>
+			<label for="commonName">Nom Commun : </label>
+			<input type="text" th:field="*{commonName}" th:value="${update_species.commonName}" id="commonName" />
+		</div>
+		<div>
+			<label for="latinName">Nom latin :</label>
+			<input type="text" th:field="*{latinName}" th:value="${update_species.latinName}" id="latinName" />
+		</div>
+		<div>
+			<input type="submit" class="button" value="Sauver" />
+			<input type="button" class="button" value="Retour" onclick="window.location='/species'" />
+		</div>
+	</form>
 </body>
 </html>

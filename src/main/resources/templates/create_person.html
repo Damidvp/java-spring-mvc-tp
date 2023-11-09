@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<form th:object="${create_person}" th:action="@{/person}" method="post">
+	<form th:object="${create_person}" th:action="@{/persons}" method="post">
 		<input type="hidden" th:field="*{id}" />
 		<div>
 			<label for="firstname">Prénom : </label>

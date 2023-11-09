@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
+	<link rel="stylesheet" th:href="@{/css/main.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des personnes</title>
 </head>
 <body>
+	<div class="content">
+		<div class="buttons">
+	<input type="button" class="button" value="Creer une personne" onclick="window.location='/persons/create'" />
+</div>
+<div class="lists">
 	<table>
 		<thead>
 			<th></th>
+			<th></th>
 			<th>ID</th>
-			<th>Prénom</th>
+			<th>Prenom</th>
 			<th>Nom</th>
 			<th>Age</th>
 		</thead>
 		<tbody>
 			<tr th:each="personItem : ${list_persons}">
-				<td><a th:href="@{'/persons/' + ${personItem.id}}">Update</a></td>
+				<td class="td-delete"><a th:href="@{'/persons/delete/' + ${personItem.id}}" onclick="return confirm('Confirmer la suppression ?')">Delete</a></td>
+				<td class="td-update"><a th:href="@{'/persons/' + ${personItem.id}}">Update</a></td>
 				<td th:text="${personItem.id}"></td>
 				<td th:text="${personItem.firstname}"/>
 				<td th:text="${personItem.lastname}"/>
@@ -24,6 +32,14 @@
 			</tr>
 		</tbody>
 	</table>
-	<input type="button" class="button" value="Créer une personne" onclick="window.location='/persons/create'" />
+</div>
+</div>
 </body>
+<footer>
+	<ul>
+		<li><a th:href="@{'/species'}">Especes</a></li>
+		<li><a th:href="@{'/animals'}">Animaux</a></li>
+		<li><a th:href="@{'/persons'}">Personnes</a></li>
+	</ul>
+</footer>
 </html>

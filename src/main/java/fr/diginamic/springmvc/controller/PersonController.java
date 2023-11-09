@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import fr.diginamic.springmvc.model.Animal;
 import fr.diginamic.springmvc.model.Person;
 import fr.diginamic.springmvc.repository.PersonRepository;
 
@@ -41,6 +43,20 @@ public class PersonController {
 	public String getCreatePerson(Model model) {
 		model.addAttribute("create_person", new Person());
 		return "create_person";
+	}
+	
+	@PostMapping
+	public String createOrUpdatePerson(Person personItem) {
+		System.out.println("Update Person : " + personItem);
+		personRepo.save(personItem);
+		return "redirect:/persons";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deletePerson(@PathVariable("id") Integer id) {
+		Optional<Person> personToDelete = personRepo.findById(id);
+		personToDelete.ifPresent(person -> personRepo.delete(person));
+		return "redirect:/persons";
 	}
 	
 }

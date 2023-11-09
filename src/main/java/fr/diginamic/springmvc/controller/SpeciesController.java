@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.diginamic.springmvc.model.Species;
@@ -42,6 +43,20 @@ public class SpeciesController {
 	public String getCreateSpecies(Model model) {
 		model.addAttribute("create_species", new Species());
 		return "create_species";
+	}
+	
+	@PostMapping
+	public String createOrUpdateSpecies(Species speciesItem) {
+		System.out.println("Update Species : " + speciesItem);
+		speciesRepo.save(speciesItem);
+		return "redirect:/species";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteSpecies(@PathVariable("id") Integer id) {
+		Optional<Species> speciesToDelete = speciesRepo.findById(id);
+		speciesToDelete.ifPresent(species -> speciesRepo.delete(species));
+		return "redirect:/species";
 	}
 	
 }

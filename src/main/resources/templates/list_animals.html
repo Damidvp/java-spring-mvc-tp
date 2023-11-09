@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
+	<link rel="stylesheet" th:href="@{/css/main.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des animaux</title>
 </head>
 <body>
+	<div class="content">
+		<div class="buttons">
+	<input type="button" class="button" value="Creer un animal" onclick="window.location='/animals/create'" />
+</div>
+<div class="lists">
 	<table>
 		<thead>
+			<th></th>
 			<th></th>
 			<th>ID</th>
 			<th>Nom</th>
@@ -16,7 +23,8 @@
 		</thead>
 		<tbody>
 			<tr th:each="animalItem : ${list_animals}">
-				<td><a th:href="@{'/animals/' + ${animalItem.id}}">Update</a></td>
+				<td class="td-delete"><a th:href="@{'/animals/delete/' + ${animalItem.id}}" onclick="return confirm('Confirmer la suppression ?')">Delete</a></td>
+				<td class="td-update"><a th:href="@{'/animals/' + ${animalItem.id}}">Update</a></td>
 				<td th:text="${animalItem.id}"></td>
 				<td th:text="${animalItem.name}"/>
 				<td th:text="${animalItem.color}"/>
@@ -24,6 +32,14 @@
 			</tr>
 		</tbody>
 	</table>
-	<input type="button" class="button" value="Créer un animal" onclick="window.location='/animals/create'" />
+</div>
+</div>
 </body>
+<footer>
+	<ul>
+		<li><a th:href="@{'/species'}">Especes</a></li>
+		<li><a th:href="@{'/animals'}">Animaux</a></li>
+		<li><a th:href="@{'/persons'}">Personnes</a></li>
+	</ul>
+</footer>
 </html>

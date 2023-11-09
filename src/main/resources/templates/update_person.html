@@ -6,9 +6,25 @@
     <title>Update d'une personne</title>
 </head>
 <body>
-	<h1>Personne [ID <span th:text="${update_person.id}"></span>]</h1>
-	<p th:text="${update_person.firstname}"></p>
-	<p th:text="${update_person.lastname}"></p>
-	<p th:text="${update_person.age}"></p>
+	<h1>Modification de la personne [ID <span th:text="${update_person.id}"></span>]</h1>
+	<form th:object="${update_person}" th:action="@{/persons}" method="post">
+		<input type="hidden" th:field="*{id}" />
+		<div>
+			<label for="firstname">Prénom : </label>
+			<input type="text" th:field="*{firstname}" th:value="${update_person.firstname}" id="firstname" />
+		</div>
+		<div>
+			<label for="lastname">Nom :</label>
+			<input type="text" th:field="*{lastname}" th:value="${update_person.lastname}" id="lastname" />
+		</div>
+		<div>
+			<label for="age">Age :</label>
+			<input type="text" th:field="*{age}" th:value="${update_person.age}" id="age" />
+		</div>
+		<div>
+			<input type="submit" class="button" value="Sauver" />
+			<input type="button" class="button" value="Retour" onclick="window.location='/persons'" />
+		</div>
+	</form>
 </body>
 </html>

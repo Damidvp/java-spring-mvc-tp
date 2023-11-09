@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<form th:object="${create_species}" th:action="@{/specie}" method="post">
+	<form th:object="${create_species}" th:action="@{/species}" method="post">
 		<input type="hidden" th:field="*{id}" />
 		<div>
 			<label for="commonName">Nom Commun : </label>

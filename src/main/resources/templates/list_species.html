@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
+	<link rel="stylesheet" th:href="@{/css/main.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Species</title>
 </head>
 <body>
-	<table>
-		<thead>
-			<th></th>
-			<th>ID</th>
-			<th>Common Name</th>
-			<th>Latin Name</th>
-		</thead>
-		<tbody>
-			<tr th:each="speciesItem : ${list_species}">
-				<td><a th:href="@{'/species/' + ${speciesItem.id}}">Update</a></td>
-				<td th:text="${speciesItem.id}"></td>
-				<td th:text="${speciesItem.commonName}"/>
-				<td th:text="${speciesItem.latinName}"/>
-			</tr>
-		</tbody>
-	</table>
-	<input type="button" class="button" value="Créer un Species" onclick="window.location='/species/create'" />
+	<div class="content">
+	<div class="buttons">
+		<input type="button" class="button" value="Creer une espece" onclick="window.location='/species/create'" />
+	</div>
+	<div class="lists">
+		<table>
+			<thead>
+				<th></th>
+				<th></th>
+				<th>ID</th>
+				<th>Common Name</th>
+				<th>Latin Name</th>
+			</thead>
+			<tbody>
+				<tr th:each="speciesItem : ${list_species}">
+					<td class="td-delete"><a th:href="@{'/species/delete/' + ${speciesItem.id}}" onclick="return confirm('Confirmer la suppression ?')">Delete</a></td>
+					<td class="td-update"><a th:href="@{'/species/' + ${speciesItem.id}}">Update</a></td>
+					<td th:text="${speciesItem.id}"></td>
+					<td th:text="${speciesItem.commonName}"/>
+					<td th:text="${speciesItem.latinName}"/>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 </body>
+<footer>
+	<ul>
+		<li><a th:href="@{'/species'}">Especes</a></li>
+		<li><a th:href="@{'/animals'}">Animaux</a></li>
+		<li><a th:href="@{'/persons'}">Personnes</a></li>
+	</ul>
+</footer>
 </html>

@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Josefin+Sans:wght@300;400&family=Overpass&display=swap');
+
+* {
+	font-family: 'Edu TAS Beginner', cursive;
+	font-size: 1.05em;
+}
+
+.content{
+	display: flex;
+	align-items:center;
+	flex-direction: column;
+	gap:1.5em;
+}
+
+.lists{
+	display:flex;
+	justify-content:center;
+}
+
+.lists table th, .lists table td{
+	padding:0 1em;
+}
+
+.lists table th{
+	text-align:left;
+}
+
+.lists .td-update a{
+	text-decoration:none;
+	color:#00b3a4;
+}
+
+.lists .td-delete a{
+	text-decoration:none;
+	color:#830505;
+}
+
+footer ul{
+	display:flex;
+	justify-content:center;
+	gap:5em;
+}
+
+footer ul li{
+	list-style-type: none;
+}
+
+footer ul li a{
+	text-decoration: none;
+}
