@@ -5,6 +5,28 @@
 	font-size: 1.05em;
 }
 
+h1{
+	font-size:2.2em;
+}
+
+.buttons #b-create{
+	border-style: none;
+	padding: 0.3em 1em;
+	font-size: 1.5em;
+	font-weight: bold;
+	border-radius: 10px;
+	color:#5f5f5f;
+
+	transition: color 0.3s, background-color 0.3s;
+}
+
+.buttons #b-create:hover, .buttons #b-create:active, .buttons #b-create:focus{
+	cursor: pointer;
+
+	background-color:#f8f8f8;
+	color:#5ba1f1;
+}
+
 .content{
 	display: flex;
 	align-items:center;
@@ -15,6 +37,10 @@
 .lists{
 	display:flex;
 	justify-content:center;
+
+	border: 1px black solid;
+	border-radius: 5px;
+	padding: 1em 0;
 }
 
 .lists table th, .lists table td{
@@ -28,23 +54,97 @@
 .lists .td-update a{
 	text-decoration:none;
 	color:#00b3a4;
+	background-color:#d4e7e6;
+	padding:0 1em;
+	border-radius: 8px;
+
+	transition: color 0.3s, background-color 0.3s;
+}
+
+.lists .td-update a:hover, .lists .td-update a:active, .lists .td-update a:focus{
+	color:#0dfae6;
+	background-color:#e3f1ee;
 }
 
 .lists .td-delete a{
 	text-decoration:none;
 	color:#830505;
+	background-color: #f3d2d2;
+	padding:0 1em;
+	border-radius: 8px;
+
+	transition: color 0.3s, background-color 0.3s;
 }
 
-footer ul{
+.lists .td-delete a:hover, .lists .td-delete a:active, .lists .td-delete a:focus{
+	color:#e01c1c;
+	background-color:rgb(252, 228, 228);
+}
+
+nav ul{
 	display:flex;
 	justify-content:center;
 	gap:5em;
 }
 
-footer ul li{
+nav ul li{
 	list-style-type: none;
 }
 
-footer ul li a{
+nav ul li a{
 	text-decoration: none;
+}
+
+form{
+	display:flex;
+	flex-direction: column;
+	gap:0.5em;
+}
+
+form select, form input{
+	width: 8em;
+}
+
+form .field{
+	display:flex;
+	justify-content: space-between;
+	gap:2em;
+}
+
+form .form-buttons{
+	display:flex;
+	justify-content:center;
+	gap:1em;
+}
+
+form .b-save{
+	border-style:none;
+	padding: 0.3em 1em;
+	border-radius: 7px;
+	color:#00b3a4;
+	background-color:#d4e7e6;
+
+	transition: color 0.3s, background-color 0.3s;
+}
+
+form .b-save:hover, form .b-save:active, form .b-save:focus{
+	cursor:pointer;
+	color:#0dfae6;
+	background-color:#e3f1ee;
+}
+
+form .b-back{
+	border-style:none;
+	padding: 0.3em 1em;
+	border-radius: 7px;
+	color:#830505;
+	background-color: #f3d2d2;
+
+	transition: color 0.3s, background-color 0.3s;
+}
+
+form .b-back:hover, form .b-back:active, form .b-back:focus{
+	cursor:pointer;
+	color:#e01c1c;
+	background-color:rgb(252, 228, 228);
 }

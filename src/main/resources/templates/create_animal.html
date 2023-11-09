@@ -2,41 +2,44 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
+	<link rel="stylesheet" th:href="@{/css/main.css}">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Créer un Species</title>
 </head>
 
 <body>
+	<div class="content">
+	<h1>Nouvel animal</h1>
 	<form th:object="${create_animal}" th:action="@{/animals}" method="post">
 		<input type="hidden" th:field="*{id}" />
-		<div>
+		<div class="field">
 			<label for="species">Espèce :</label>
 			<select th:field="*{species}" id="species">
 				<option th:each="sp:${speciesList}" th:value="${sp.id}" th:text="${sp.commonName}"></option>
 			</select>
 		</div>
-		<div>
+		<div class="field">
 			<label for="name">Nom : </label>
 			<input type="text" th:field="*{name}" id="name" />
 		</div>
-		<div>
+		<div class="field">
 			<label for="color">Couleur :</label>
 			<input type="text" th:field="*{color}" id="color" />
 		</div>
-		<div>
+		<div class="field">
 			<label for="sex">Sexe :</label>
 			<select th:field="*{sex}" id="sex">
 				<option value="M">M</option>
 				<option value="F">F</option>
 			</select>
 		</div>
-		<div>
-			<input type="submit" class="button" value="Sauver" />
-			<input type="button" class="button" value="Retour" onclick="window.location='/animals'" />
+		<div class="form-buttons">
+			<input type="submit" class="b-save" value="Sauver" />
+			<input type="button" class="b-back" value="Retour" onclick="window.location='/animals'" />
 		</div>
 	</form>
-
+</div>
 </body>
 
 </html>

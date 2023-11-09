@@ -3,6 +3,7 @@ package fr.diginamic.springmvc.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Person {
 	private String firstname;
 	private String lastname;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.REMOVE)
 	private List<Animal> animals = new ArrayList<>();
 	
 	public Person() {}

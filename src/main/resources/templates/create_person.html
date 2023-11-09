@@ -2,32 +2,35 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
+	<link rel="stylesheet" th:href="@{/css/main.css}">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Créer un Species</title>
 </head>
 
 <body>
+	<div class="content">
+	<h1>Nouvelle personne</h1>
 	<form th:object="${create_person}" th:action="@{/persons}" method="post">
 		<input type="hidden" th:field="*{id}" />
-		<div>
+		<div class="field">
 			<label for="firstname">Prénom : </label>
 			<input type="text" th:field="*{firstname}" id="firstname" />
 		</div>
-		<div>
+		<div class="field">
 			<label for="lastname">Nom :</label>
 			<input type="text" th:field="*{lastname}" id="lastname" />
 		</div>
-		<div>
+		<div class="field">
 			<label for="age">Age :</label>
-			<input type="text" th:field="*{age}" id="age" />
+			<input type="number" th:field="*{age}" id="age" />
 		</div>
-		<div>
-			<input type="submit" class="button" value="Sauver" />
-			<input type="button" class="button" value="Retour" onclick="window.location='/persons'" />
+		<div class="form-buttons">
+			<input type="submit" class="b-save" value="Sauver" />
+			<input type="button" class="b-back" value="Retour" onclick="window.location='/persons'" />
 		</div>
 	</form>
-
+</div>
 </body>
 
 </html>

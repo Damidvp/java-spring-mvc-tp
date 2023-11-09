@@ -3,12 +3,14 @@ package fr.diginamic.springmvc.model;
 import java.util.List;
 
 import fr.diginamic.springmvc.enums.Sex;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -25,10 +27,10 @@ public class Animal {
 	@Enumerated(EnumType.STRING)
 	private Sex sex;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	private Species species;
 	
-	@ManyToMany(mappedBy = "animals")
+	@ManyToMany(mappedBy = "animals", cascade = CascadeType.REMOVE)
 	private List<Person> person;
 	
 	public Animal() {}

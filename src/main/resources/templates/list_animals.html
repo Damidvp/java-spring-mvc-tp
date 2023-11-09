@@ -7,9 +7,16 @@
     <title>Liste des animaux</title>
 </head>
 <body>
+	<nav>
+		<ul>
+			<li><a th:href="@{'/species'}">Especes</a></li>
+			<li><a th:href="@{'/animals'}">Animaux</a></li>
+			<li><a th:href="@{'/persons'}">Personnes</a></li>
+		</ul>
+	</nav>
 	<div class="content">
 		<div class="buttons">
-	<input type="button" class="button" value="Creer un animal" onclick="window.location='/animals/create'" />
+	<input type="button" id="b-create" value="Creer un animal" onclick="window.location='/animals/create'" />
 </div>
 <div class="lists">
 	<table>
@@ -35,11 +42,4 @@
 </div>
 </div>
 </body>
-<footer>
-	<ul>
-		<li><a th:href="@{'/species'}">Especes</a></li>
-		<li><a th:href="@{'/animals'}">Animaux</a></li>
-		<li><a th:href="@{'/persons'}">Personnes</a></li>
-	</ul>
-</footer>
 </html>
