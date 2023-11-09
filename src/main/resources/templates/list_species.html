@@ -7,7 +7,12 @@
 </head>
 <body>
 	<table>
-		<thead>Species</thead>
+		<thead>
+			<th></th>
+			<th>ID</th>
+			<th>Common Name</th>
+			<th>Latin Name</th>
+		</thead>
 		<tbody>
 			<tr th:each="speciesItem : ${list_species}">
 				<td><a th:href="@{'/species/' + ${speciesItem.id}}">Update</a></td>
@@ -17,5 +22,6 @@
 			</tr>
 		</tbody>
 	</table>
+	<input type="button" class="button" value="Créer un Species" onclick="window.location='/species/create'" />
 </body>
 </html>

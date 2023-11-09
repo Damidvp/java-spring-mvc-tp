@@ -46,6 +46,14 @@ public class Animal {
 				this.species.getCommonName() + " ***";
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getColor() {
 		return color;
 	}

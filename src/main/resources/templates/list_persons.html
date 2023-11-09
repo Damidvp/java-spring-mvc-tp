@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des personnes</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<th></th>
+			<th>ID</th>
+			<th>Prénom</th>
+			<th>Nom</th>
+			<th>Age</th>
+		</thead>
+		<tbody>
+			<tr th:each="personItem : ${list_persons}">
+				<td><a th:href="@{'/persons/' + ${personItem.id}}">Update</a></td>
+				<td th:text="${personItem.id}"></td>
+				<td th:text="${personItem.firstname}"/>
+				<td th:text="${personItem.lastname}"/>
+				<td th:text="${personItem.age}"/>
+			</tr>
+		</tbody>
+	</table>
+	<input type="button" class="button" value="Créer une personne" onclick="window.location='/persons/create'" />
+</body>
+</html>
