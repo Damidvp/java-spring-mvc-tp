@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Créer un Species</title>
+</head>
+
+<body>
+	<form th:object="${create_species}" th:action="@{/specie}" method="post">
+		<input type="hidden" th:field="*{id}" />
+		<div>
+			<label for="commonName">Nom Commun : </label>
+			<input type="text" th:field="*{commonName}" id="commonName" />
+		</div>
+		<div>
+			<label for="latinName">Nom latin :</label>
+			<input type="text" th:field="*{latinName}" id="latinName" />
+		</div>
+		<div>
+			<input type="submit" class="button" value="Sauver" />
+			<input type="button" class="button" value="Retour" onclick="window.location='/species'" />
+		</div>
+	</form>
+
+</body>
+
+</html>
