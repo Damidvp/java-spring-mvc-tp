@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.github.javafaker.Faker;
 
 import fr.diginamic.springmvc.model.Animal;
@@ -53,8 +55,12 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
 		for(int i=0; i<numberOfAdoptions; i++) {
 			Person randomPerson = allPersons.get(new Random().nextInt(allPersons.size()));
 			Animal randomAnimal = allAnimals.get(new Random().nextInt(allAnimals.size()));
-			randomPerson.addAnimal(randomAnimal);
-			em.persist(randomPerson);
+			
+			if(!randomPerson.getAnimals().contains(randomAnimal)) {
+				randomPerson.addAnimal(randomAnimal);
+				em.persist(randomPerson);
+			}
+			
 		}
 	}
 	

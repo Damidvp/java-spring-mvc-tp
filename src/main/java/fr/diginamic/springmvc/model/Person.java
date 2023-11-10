@@ -94,5 +94,13 @@ public class Person {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+
+	public List<Animal> getAnimals() {
+		return animals;
+	}
+
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
+	}
 	
 }

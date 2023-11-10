@@ -78,6 +78,12 @@ public class PersonController {
 		return "redirect:/persons";
 	}
 	
+	@GetMapping("/adopt") @Transactional
+	public String adopt15Animals() {
+		personRepo.giveAnimalsToRandomPersons(15);
+		return "redirect:/persons";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String deletePerson(@PathVariable("id") Integer id) {
 		Optional<Person> personToDelete = personRepo.findById(id);

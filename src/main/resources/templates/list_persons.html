@@ -16,9 +16,10 @@
 	</nav>
 	<div class="content">
 		<div class="buttons">
-	<input type="button" id="b-create" value="Creer une personne" onclick="window.location='/persons/create'" />
-	<input type="button" id="b-random" value="Generer 15 personnes" onclick="window.location='/persons/random'" />
-	<input type="button" id="b-delete" value="Supprimer les personnes sans animal" onclick="window.location='/persons/clear'" />
+	<input type="button" value="Creer une personne" onclick="window.location='/persons/create'" />
+	<input type="button" value="Generer 15 personnes" onclick="window.location='/persons/random'" />
+	<input type="button" value="Supprimer les personnes sans animal" onclick="window.location='/persons/clear'" />
+	<input type="button" value="Donner 15 animaux aleatoirement" onclick="window.location='/persons/adopt'" />
 </div>
 <div class="lists">
 	<table>
@@ -29,6 +30,7 @@
 			<th>Prenom</th>
 			<th>Nom</th>
 			<th>Age</th>
+			<th>Animaux</th>
 		</thead>
 		<tbody>
 			<tr th:each="personItem : ${list_persons}">
@@ -38,6 +40,7 @@
 				<td th:text="${personItem.firstname}"/>
 				<td th:text="${personItem.lastname}"/>
 				<td th:text="${personItem.age}"/>
+				<td ><span th:each="animal : ${personItem.animals}" th:text="${animal.name} + ' '"></span></td>
 			</tr>
 		</tbody>
 	</table>
