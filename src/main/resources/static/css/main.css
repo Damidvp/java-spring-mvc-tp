@@ -9,7 +9,7 @@ h1{
 	font-size:2.2em;
 }
 
-.buttons #b-create{
+.buttons input{
 	border-style: none;
 	padding: 0.3em 1em;
 	font-size: 1.5em;
@@ -20,7 +20,7 @@ h1{
 	transition: color 0.3s, background-color 0.3s;
 }
 
-.buttons #b-create:hover, .buttons #b-create:active, .buttons #b-create:focus{
+.buttons input:hover, .buttons input:active, .buttons input:focus{
 	cursor: pointer;
 
 	background-color:#f8f8f8;

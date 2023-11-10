@@ -32,6 +32,11 @@
 			<input type="submit" class="b-save" value="Sauver" />
 			<input type="button" class="b-back" value="Retour" onclick="window.location='/persons'" />
 		</div>
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">
+				
+			</p>
+		</div>
 	</form>
 </div>
 </body>

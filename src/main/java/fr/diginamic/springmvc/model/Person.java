@@ -3,6 +3,7 @@ package fr.diginamic.springmvc.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.diginamic.springmvc.validation.NameFormat;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,10 +28,12 @@ public class Person {
 	
 	@NotEmpty
 	@Size(max = 50)
+	@NameFormat
 	private String firstname;
 	
 	@NotEmpty
 	@Size(max = 50)
+	@NameFormat
 	private String lastname;
 	
 	@ManyToMany(cascade = CascadeType.REMOVE)

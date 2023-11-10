@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.diginamic.springmvc.model.Person;
 import fr.diginamic.springmvc.repository.PersonRepository;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @Controller
@@ -62,6 +63,18 @@ public class PersonController {
 			return "update_person";
 		}
 		personRepo.save(personItem);
+		return "redirect:/persons";
+	}
+	
+	@GetMapping("/random") @Transactional
+	public String create15Persons() {
+		personRepo.createPersonEntities(15);
+		return "redirect:/persons";
+	}
+	
+	@GetMapping("/clear") @Transactional
+	public String clearPersonsWithoutAnimal() {
+		personRepo.deletePersonsWithoutAnimal();
 		return "redirect:/persons";
 	}
 	

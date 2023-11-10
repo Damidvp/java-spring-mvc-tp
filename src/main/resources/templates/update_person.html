@@ -29,6 +29,11 @@
 			<input type="submit" class="button" value="Sauver" />
 			<input type="button" class="button" value="Retour" onclick="window.location='/persons'" />
 		</div>
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">
+				
+			</p>
+		</div>
 	</form>
 </body>
 </html>
