@@ -11,16 +11,18 @@
 <body>
 	<div class="content">
 	<h1>Nouvelle espèce</h1>
-	<form th:object="${create_species}" th:action="@{/species}" method="post">
+	<form th:object="${create_species}" th:action="@{/species/new}" method="post">
 		<input type="hidden" th:field="*{id}" />
 		<div class="field">
 			<label for="commonName">Nom Commun : </label>
 			<input type="text" th:field="*{commonName}" id="commonName" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('commonName')}" th:errors="*{commonName}"></span>
 		<div class="field">
 			<label for="latinName">Nom latin :</label>
 			<input type="text" th:field="*{latinName}" id="latinName" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('latinName')}" th:errors="*{latinName}"></span>
 		<div class="form-buttons">
 			<input type="submit" class="b-save" value="Sauver" />
 			<input type="button" class="b-back" value="Retour" onclick="window.location='/species'" />

@@ -148,3 +148,7 @@ form .b-back:hover, form .b-back:active, form .b-back:focus{
 	color:#e01c1c;
 	background-color:rgb(252, 228, 228);
 }
+
+.error-msg{
+	color:#e01c1c;
+}

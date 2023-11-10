@@ -10,10 +10,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Animal {
@@ -21,13 +21,17 @@ public class Animal {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotEmpty
 	private String color;
+	
+	@NotEmpty
 	private String name;
 	
 	@Enumerated(EnumType.STRING)
 	private Sex sex;
 	
 	@ManyToOne(cascade = CascadeType.REMOVE)
+	@NotNull
 	private Species species;
 	
 	@ManyToMany(mappedBy = "animals", cascade = CascadeType.REMOVE)

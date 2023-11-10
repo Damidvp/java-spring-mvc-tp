@@ -11,20 +11,23 @@
 <body>
 	<div class="content">
 	<h1>Nouvelle personne</h1>
-	<form th:object="${create_person}" th:action="@{/persons}" method="post">
+	<form th:object="${create_person}" th:action="@{/persons/new}" method="post">
 		<input type="hidden" th:field="*{id}" />
 		<div class="field">
 			<label for="firstname">Prénom : </label>
 			<input type="text" th:field="*{firstname}" id="firstname" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
 		<div class="field">
 			<label for="lastname">Nom :</label>
 			<input type="text" th:field="*{lastname}" id="lastname" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
 		<div class="field">
 			<label for="age">Age :</label>
 			<input type="number" th:field="*{age}" id="age" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
 		<div class="form-buttons">
 			<input type="submit" class="b-save" value="Sauver" />
 			<input type="button" class="b-back" value="Retour" onclick="window.location='/persons'" />

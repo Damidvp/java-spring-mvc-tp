@@ -8,20 +8,23 @@
 </head>
 <body>
 	<h1>Modification de la personne [ID <span th:text="${update_person.id}"></span>]</h1>
-	<form th:object="${update_person}" th:action="@{/persons}" method="post">
+	<form th:object="${update_person}" th:action="@{/persons/update}" method="post">
 		<input type="hidden" th:field="*{id}" />
 		<div>
 			<label for="firstname">Prénom : </label>
 			<input type="text" th:field="*{firstname}" th:value="${update_person.firstname}" id="firstname" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
 		<div>
 			<label for="lastname">Nom :</label>
 			<input type="text" th:field="*{lastname}" th:value="${update_person.lastname}" id="lastname" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
 		<div>
 			<label for="age">Age :</label>
 			<input type="number" th:field="*{age}" th:value="${update_person.age}" id="age" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
 		<div>
 			<input type="submit" class="button" value="Sauver" />
 			<input type="button" class="button" value="Retour" onclick="window.location='/persons'" />

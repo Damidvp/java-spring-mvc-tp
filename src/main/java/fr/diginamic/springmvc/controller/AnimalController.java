@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fr.diginamic.springmvc.model.Animal;
 import fr.diginamic.springmvc.repository.AnimalRepository;
 import fr.diginamic.springmvc.repository.SpeciesRepository;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/animals")
@@ -52,9 +55,22 @@ public class AnimalController {
 		return "create_animal";
 	}
 	
-	@PostMapping
-	public String createOrUpdateAnimal(Animal animalItem) {
-		System.out.println("Update Animal : " + animalItem);
+	@PostMapping("/new")
+	public String createAnimal(@Valid @ModelAttribute("create_animal") Animal animalItem, BindingResult result, Model model) {
+		model.addAttribute("speciesList", speciesRepo.findAll(Sort.by(Sort.Direction.ASC, "commonName")));
+		if(result.hasErrors()) {
+			return "create_animal";
+		}
+		animalRepo.save(animalItem);
+		return "redirect:/animals";
+	}
+	
+	@PostMapping("/update")
+	public String updateAnimal(@Valid @ModelAttribute("update_animal") Animal animalItem, BindingResult result, Model model) {
+		model.addAttribute("speciesList", speciesRepo.findAll(Sort.by(Sort.Direction.ASC, "commonName")));
+		if(result.hasErrors()) {
+			return "update_animal";
+		}
 		animalRepo.save(animalItem);
 		return "redirect:/animals";
 	}

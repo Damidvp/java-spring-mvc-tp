@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Species {
@@ -12,9 +14,14 @@ public class Species {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "common_name")
+	@Column(name = "common_name", length = 50)
+	@NotEmpty
+	@Size(max = 50)
 	private String commonName;
-	@Column(name = "latin_name")
+	
+	@Column(name = "latin_name" , length = 120)
+	@NotEmpty
+	@Size(max = 120)
 	private String latinName;
 	
 	public Species() {}

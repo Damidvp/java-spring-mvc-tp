@@ -9,7 +9,7 @@
 <body>
 	<h1>Modification de l'animal [ID <span th:text="${update_animal.id}"></span>]</h1>
 	
-	<form th:object="${update_animal}" th:action="@{/animals}" method="post">
+	<form th:object="${update_animal}" th:action="@{/animals/update}" method="post">
 		<input type="hidden" th:field="*{id}" />
 		<div>
 			<label for="species">Espèce :</label>
@@ -17,14 +17,17 @@
 				<option th:each="sp:${speciesList}" th:value="${sp.id}" th:text="${sp.commonName}"></option>
 			</select>
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('species')}" th:errors="*{species}"></span>
 		<div>
 			<label for="name">Nom : </label>
 			<input type="text" th:field="*{name}" th:value="${update_animal.name}" id="name" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 		<div>
 			<label for="color">Couleur :</label>
 			<input type="text" th:field="*{color}" th:value="${update_animal.color}" id="color" />
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
 		<div>
 			<label for="sex">Sexe :</label>
 			<select th:field="*{sex}" th:value="${update_animal.sex}" id="sex">
@@ -32,6 +35,7 @@
 				<option value="F">F</option>
 			</select>
 		</div>
+		<span class="error-msg" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}"></span>
 		<div>
 			<input type="submit" class="button" value="Sauver" />
 			<input type="button" class="button" value="Retour" onclick="window.location='/animals'" />
